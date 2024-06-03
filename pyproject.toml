@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "st_datafilter"
+dynamic = ["version"]
+authors = [{ name = "Maxwell Levin", email = "maxwellshannonlevin@gmail.com" }]
+description = "Tool for filtering pandas dataframes in streamlit."
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["streamlit", "pandas"]
+license = { file = "LICENSE.md" }
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering",
+    "Intended Audience :: Science/Research",
+]
+
+dependencies = ["pandas", "numpy", "streamlit", "plotly"]
+
+[project.optional-dependencies]
+dev = ["build", "ruff"]
+
+[tool.setuptools.packages.find]
+include = ["st_datafilter"]
+
+[tool.setuptools.package-data]
+st_datafilter = ["py.typed"]
+
+[tool.setuptools_scm]
+local_scheme = "no-local-version"
+write_to = "st_datafilter/_version.py"
+
+[tool.setuptools.dynamic]
+version = { attr = "st_datafilter._version.__version__" }
