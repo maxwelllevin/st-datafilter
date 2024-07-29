@@ -3,9 +3,9 @@ from typing import Any
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-from pandas.api.types import is_categorical_dtype  # type: ignore
 from pandas.api.types import (
     is_bool_dtype,
+    is_categorical_dtype,  # type: ignore
     is_datetime64_any_dtype,
     is_numeric_dtype,
     is_string_dtype,
@@ -48,7 +48,7 @@ def filter_dataframe(
 
 
 def _add_boolean_filter_ui(df: pd.DataFrame, col: str) -> pd.DataFrame:
-    values = ["True", "False", "Any"]
+    values = ["Any", "True", "False"]
     key = f"{col}_boolean_filter"
     user_bool_input = st.radio(f"Values for {col}", values, horizontal=True, key=key)
     if user_bool_input == "True":
@@ -93,6 +93,7 @@ def _add_regex_filter_ui(df: pd.DataFrame, col: str) -> pd.DataFrame:
 
 
 def _add_numeric_filter_ui(df: pd.DataFrame, col: str, bounds: Any) -> pd.DataFrame:
+    # TODO: add option for sigma clip
     _min, _max = bounds[col][0], bounds[col][1]
     key = f"{col}_numeric_filter"
     user_num_input = st.slider(
