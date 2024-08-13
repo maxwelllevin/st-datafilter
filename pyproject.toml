@@ -10,7 +10,7 @@ description = "Tool for filtering pandas dataframes in streamlit."
 readme = "README.md"
 requires-python = ">=3.10"
 keywords = ["streamlit", "pandas"]
-license = { file = "LICENSE.md" }
+license = { file = "LICENSE" }
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Programming Language :: Python :: 3",
